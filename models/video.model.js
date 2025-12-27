@@ -18,6 +18,10 @@ const videoSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
+    videoId: {
+      type: String,
+      required: true,
+    },
     videoUrl: {
       type: String,
       required: true,
