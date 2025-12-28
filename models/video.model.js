@@ -55,6 +55,21 @@ const videoSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+videoSchema.virtual("likes").get(function(){
+  return this.likedBy.length;
+})
+
+videoSchema.virtual("dislikes").get(function () {
+  return this.disLikedBy.length;
+});
+
+videoSchema.virtual("views").get(function () {
+  return this.viewedBy.length;
+});
+
+videoSchema.set("toJSON", {
+  virtuals: true,
+});
 
 const videoModel = mongoose.model("Video", videoSchema);
 
